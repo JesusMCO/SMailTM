@@ -1090,105 +1090,12 @@ For issues, questions, or contributions, please visit:
 **Star ⭐ this repository if you find it helpful!**
 
 
-## 📦 Publishing to JitPack
 
-### For Library Maintainers
-
-To publish a new version to JitPack:
-
-1. **Create a new release on GitHub:**
-   ```bash
-   git tag -a v1.0.0 -m "Release version 1.0.0"
-   git push origin v1.0.0
-   ```
-
-2. **Create a GitHub Release:**
-   - Go to your repository on GitHub
-   - Click on "Releases" → "Create a new release"
-   - Select the tag you just created
-   - Add release notes
-   - Publish the release
-
-3. **JitPack will automatically build:**
-   - Visit https://jitpack.io/#yourusername/SMaliTM
-   - Click "Get it" on your version
-   - JitPack will build and publish your library
-
-### Version Tags
-
-Use semantic versioning for releases:
-- `v1.0.0` - Major release
-- `v1.1.0` - Minor release (new features)
-- `v1.0.1` - Patch release (bug fixes)
-
-### Build Configuration
-
-The library includes a `jitpack.yml` file for build configuration:
-
-```yaml
-jdk:
-  - openjdk17
-before_install:
-  - sdk install java 17.0.1-open
-  - sdk use java 17.0.1-open
-```
-
-## 🔧 Build from Source
-
-### Prerequisites
-
-- JDK 17 or higher
-- Android SDK
-- Gradle 8.0 or higher
-
-### Building
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/SMaliTM.git
-cd SMaliTM
-
-# Build the library
-./gradlew :smalitm:build
-
-# Run tests
-./gradlew :smalitm:test
-
-# Generate documentation
-./gradlew :smalitm:dokkaHtml
-```
-
-### Using Local Build
-
-```kotlin
-// In your app's build.gradle.kts
-dependencies {
-    implementation(project(":smalitm"))
-}
-```
-
-## 📱 Sample App
-
-The repository includes a sample Android app demonstrating all library features:
-
-```bash
-# Run the sample app
-./gradlew :app:installDebug
-```
-
-Features demonstrated:
-- Creating temporary email accounts
-- Fetching and displaying messages
-- Real-time message notifications
-- HTML email rendering
-- Message operations (mark as read, delete)
-- Gmail-style UI/UX
-
----
 
 **⭐ Star this repository if you find it helpful!**
 
-**🐛 Found a bug? [Report it here](https://github.com/yourusername/SMaliTM/issues)**
+**🐛 Found a bug? [Report it here](https://github.com/samyak2403/SMaliTM/issues)**
 
-**💡 Have a feature request? [Let us know](https://github.com/yourusername/SMaliTM/discussions)**
+**💡 Have a feature request? [Let us know](https://github.com/samyak2403/SMaliTM/discussions)**
 #
+
