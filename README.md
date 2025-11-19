@@ -1,6 +1,6 @@
 # SMaliTM - Kotlin Mail.tm API Wrapper
 
-[![JitPack](https://jitpack.io/v/yourusername/SMaliTM.svg)](https://jitpack.io/#yourusername/SMaliTM)
+[![JitPack](https://jitpack.io/v/samyak2403/SMaliTM.svg)](https://jitpack.io/#yourusername/SMaliTM)
 [![Kotlin](https://img.shields.io/badge/Kotlin-1.9.0-blue.svg)](https://kotlinlang.org/)
 [![API](https://img.shields.io/badge/API-24%2B-brightgreen.svg)](https://android-arsenal.com/api?level=24)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
@@ -84,7 +84,7 @@ dependencies {
 }
 ```
 
-**Latest Version:** [![JitPack](https://jitpack.io/v/yourusername/SMaliTM.svg)](https://jitpack.io/#yourusername/SMaliTM)
+**Latest Version:** [![JitPack](https://jitpack.io/v/samyak2403/SMaliTM.svg)](https://jitpack.io/#yourusername/SMaliTM)
 
 ### Gradle (Local Module)
 
@@ -1098,4 +1098,5 @@ For issues, questions, or contributions, please visit:
 
 **💡 Have a feature request? [Let us know](https://github.com/samyak2403/SMaliTM/discussions)**
 #
+
 
