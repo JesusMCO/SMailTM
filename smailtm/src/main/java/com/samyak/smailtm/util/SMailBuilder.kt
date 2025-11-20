@@ -7,9 +7,9 @@ import com.samyak.smailtm.io.IO
 import javax.security.auth.login.LoginException
 
 /**
- * The SMaliBuilder class provides methods for account creation and authentication.
+ * The SMailBuilder class provides methods for account creation and authentication.
  */
-object SMaliBuilder {
+object SMailBuilder {
 
     /**
      * Logs in to the API and returns a SMailTM instance.

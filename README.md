@@ -6,7 +6,28 @@
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Mail.tm](https://img.shields.io/badge/Mail.tm-API-red.svg)](https://mail.tm)
 
-A powerful and easy-to-use Kotlin library for Android that provides a complete interface to interact with the [Mail.tm](https://mail.tm) temporary email service API. This library is a Kotlin conversion of the popular [JMailTM](https://github.com/shivam1608/JMailTM) library, optimized for modern Android development with Kotlin Coroutines support.
+**SMailTM** is a powerful Kotlin library for Android that enables you to **create and manage temporary disposable email addresses** using the [Mail.tm](https://mail.tm) service. Perfect for protecting user privacy, testing, and avoiding spam.
+
+## 🎯 What Does This Library Do?
+
+This library allows you to:
+- ✉️ **Create temporary email addresses** instantly without registration
+- 📥 **Receive emails in real-time** with Server-Sent Events (SSE)
+- 📎 **Download attachments** from received emails
+- 🔐 **Maintain user privacy** - no personal information required
+- 🚀 **Build privacy-focused apps** like temporary email services
+- 🧪 **Test email functionality** in your Android apps
+
+Built specifically for **Kotlin** and **Android**, this library is a modern conversion of the popular [JMailTM](https://github.com/shivam1608/JMailTM) Java library, optimized with Kotlin Coroutines and Android best practices.
+
+## 💡 Use Cases
+
+- **Privacy Protection Apps**: Build apps like TempBox Lite for disposable emails
+- **Email Testing**: Test email verification flows in your apps
+- **Sign-up Protection**: Let users sign up without exposing their real email
+- **Spam Prevention**: Avoid spam by using temporary emails for untrusted sites
+- **Anonymous Communication**: Enable anonymous email receiving
+- **Development & QA**: Test email features without real email accounts
 
 ## 📱 Apps Using SMailTM
 
@@ -71,11 +92,15 @@ Perfect for sign-ups, verifications, and protecting your personal email from spa
 
 ## 📦 Installation
 
-### JitPack (Recommended)
+### Step-by-Step Installation Guide
 
-#### Step 1: Add JitPack repository
+Follow these steps to integrate SMailTM into your Android project:
 
-Add the JitPack repository to your root `settings.gradle.kts`:
+#### Step 1: Add JitPack Repository
+
+**Option A: Using settings.gradle.kts (Recommended for newer projects)**
+
+Open your project's root `settings.gradle.kts` file and add JitPack repository:
 
 ```kotlin
 dependencyResolutionManagement {
@@ -83,51 +108,129 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://jitpack.io") }  // Add this line
     }
 }
 ```
 
-Or in your root `build.gradle.kts`:
+**Option B: Using build.gradle.kts (For older projects)**
+
+Open your project's root `build.gradle.kts` file and add JitPack repository:
 
 ```kotlin
 allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://jitpack.io") }  // Add this line
     }
 }
 ```
 
-#### Step 2: Add the dependency
+#### Step 2: Add the Dependency
 
-Add SMailTM to your app's `build.gradle.kts`:
+Open your app module's `build.gradle.kts` (or `build.gradle`) file and add the SMailTM dependency:
 
+**For Kotlin DSL (build.gradle.kts):**
 ```kotlin
 dependencies {
-      implementation 'com.github.samyak2403:SMailTM:SMailTM-v1.0.2'
-
+    implementation("com.github.samyak2403:SMailTM:SMailTM-v1.0.1")
 }
 ```
 
-**Latest Version:** [![JitPack](https://jitpack.io/v/samyak2403/SMailTM.svg)](https://jitpack.io/#yourusername/SMailTM)
+**For Groovy DSL (build.gradle):**
+```groovy
+dependencies {
+    implementation 'com.github.samyak2403:SMailTM:SMailTM-v1.0.1'
+}
+```
 
-### Gradle (Local Module)
+**Latest Version:** [![JitPack](https://jitpack.io/v/samyak2403/SMailTM.svg)](https://jitpack.io/#samyak2403/SMailTM)
+
+#### Step 3: Add Internet Permissions
+
+Open your `AndroidManifest.xml` file and add the required permissions:
+
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <!-- Add these permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <application>
+        <!-- Your app content -->
+    </application>
+</manifest>
+```
+
+#### Step 4: Sync Your Project
+
+Click **"Sync Now"** in Android Studio or run:
+```bash
+./gradlew build
+```
+
+#### Step 5: Verify Installation
+
+Create a simple test to verify the library is working:
+
+```kotlin
+import com.samyak.smailtm.util.SMailBuilder
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        // Test library installation
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                val mailTM = SMailBuilder.createDefault("testPassword123")
+                mailTM.init()
+                val account = mailTM.getSelf()
+                
+                withContext(Dispatchers.Main) {
+                    Log.d("SMailTM", "✅ Library working! Email: ${account.email}")
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Log.e("SMailTM", "❌ Error: ${e.message}")
+                }
+            }
+        }
+    }
+}
+```
+
+---
+
+### Alternative Installation Methods
+
+#### Using Local Module
 
 If you want to include the library as a local module:
 
-```kotlin
-// settings.gradle.kts
-include(":SMailTM")
+**Step 1:** Clone the repository into your project:
+```bash
+cd YourProject
+git clone https://github.com/samyak2403/SMailTM.git smailtm
+```
 
-// app/build.gradle.kts
+**Step 2:** Add to `settings.gradle.kts`:
+```kotlin
+include(":app", ":smailtm")
+```
+
+**Step 3:** Add dependency in `app/build.gradle.kts`:
+```kotlin
 dependencies {
-    implementation(project(":SMailTM"))
+    implementation(project(":smailtm"))
 }
 ```
 
-### Maven
+#### Using Maven
+
+Add to your `pom.xml`:
 
 ```xml
 <repositories>
@@ -138,34 +241,266 @@ dependencies {
 </repositories>
 
 <dependency>
-    <groupId>com.github.yourusername</groupId>
+    <groupId>com.github.samyak2403</groupId>
     <artifactId>SMailTM</artifactId>
-    <version>1.0.0</version>
+    <version>SMailTM-v1.0.1</version>
 </dependency>
 ```
 
-### Requirements
+---
 
-- **Min SDK:** 24 (Android 7.0)
-- **Kotlin:** 1.9.0 or higher
-- **Internet Permission:** Required in AndroidManifest.xml
+### System Requirements
 
-```xml
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-```
+Before installing, ensure your project meets these requirements:
+
+| Requirement | Minimum Version |
+|------------|----------------|
+| **Android SDK** | API 24 (Android 7.0) |
+| **Kotlin** | 1.9.0 or higher |
+| **Gradle** | 7.0 or higher |
+| **Java** | 11 or higher |
+
+### Troubleshooting Installation
+
+**Issue: "Failed to resolve: com.github.samyak2403:SMailTM"**
+- Solution: Make sure JitPack repository is added correctly
+- Verify internet connection
+- Try invalidating cache: File → Invalidate Caches → Restart
+
+**Issue: "Manifest merger failed"**
+- Solution: Permissions are already added automatically by the library
+- If conflict occurs, add `tools:replace="android:name"` to your manifest
+
+**Issue: Build fails with "Duplicate class" error**
+- Solution: Check for conflicting dependencies (OkHttp, Gson)
+- Use dependency resolution strategy if needed
 
 ## 🚀 Quick Start
 
-### Basic Example
+### Complete Step-by-Step Working Example
+
+#### Step 1: Import Required Classes
 
 ```kotlin
-import com.samyak.SMailTM.util.SMaliBuilder
-import com.samyak.SMailTM.callbacks.MessageFetchedCallback
+import com.samyak.smailtm.util.SMailBuilder
+import com.samyak.smailtm.util.Message
+import com.samyak.smailtm.util.Response
+import com.samyak.smailtm.util.Account
+import com.samyak.smailtm.SMailTM
+import com.samyak.smailtm.callbacks.MessageFetchedCallback
+import com.samyak.smailtm.callbacks.EventListener
+import javax.security.auth.login.LoginException
+import kotlinx.coroutines.*
+import androidx.lifecycle.lifecycleScope
+```
+
+#### Step 2: Create a Temporary Email Account
+
+```kotlin
+// In your Activity or Fragment
+lifecycleScope.launch(Dispatchers.IO) {
+    try {
+        // Create account with random email
+        val mailTM = SMailBuilder.createDefault("yourPassword123")
+        mailTM.init()
+        
+        // Get account details
+        val account = mailTM.getSelf()
+        
+        withContext(Dispatchers.Main) {
+            println("✅ Account created!")
+            println("📧 Email: ${account.email}")
+            println("🆔 ID: ${account.id}")
+            Toast.makeText(this@MainActivity, "Email: ${account.email}", Toast.LENGTH_LONG).show()
+        }
+    } catch (e: LoginException) {
+        withContext(Dispatchers.Main) {
+            println("❌ Failed: ${e.message}")
+        }
+    }
+}
+```
+
+#### Step 3: Fetch Messages
+
+```kotlin
+mailTM.asyncFetchMessages(object : MessageFetchedCallback {
+    override fun onMessagesFetched(messages: List<Message>) {
+        println("📬 Received ${messages.size} messages")
+        
+        messages.forEach { message ->
+            println("From: ${message.senderAddress}")
+            println("Subject: ${message.subject}")
+            println("Content: ${message.content}")
+            println("Has Attachments: ${message.hasAttachments}")
+        }
+    }
+    
+    override fun onError(error: Response) {
+        println("❌ Error: ${error.responseCode}")
+    }
+})
+```
+
+#### Step 4: Listen for Real-time Messages
+
+```kotlin
+mailTM.openEventListener(object : EventListener {
+    override fun onReady() {
+        println("✅ Listening for new messages...")
+    }
+    
+    override fun onMessageReceived(message: Message) {
+        println("📧 New message from: ${message.senderAddress}")
+        println("Subject: ${message.subject}")
+        
+        // Automatically mark as read
+        message.asyncMarkAsRead()
+    }
+    
+    override fun onMessageSeen(message: Message) {
+        println("👁️ Message marked as seen")
+    }
+    
+    override fun onMessageDelete(id: String) {
+        println("🗑️ Message deleted: $id")
+    }
+    
+    override fun onAccountUpdate(account: Account) {
+        println("🔄 Account updated")
+    }
+    
+    override fun onAccountDelete(account: Account) {
+        println("❌ Account deleted")
+    }
+    
+    override fun onError(error: String) {
+        println("⚠️ Error: $error")
+    }
+})
+```
+
+#### Step 5: Clean Up (Important!)
+
+```kotlin
+// In your Activity/Fragment lifecycle
+override fun onDestroy() {
+    super.onDestroy()
+    mailTM?.closeMessageListener()  // Stop listening
+}
+```
+
+### Complete Working MainActivity Example
+
+```kotlin
+class MainActivity : AppCompatActivity() {
+    private var mailTM: SMailTM? = null
+    private lateinit var emailTextView: TextView
+    private lateinit var messagesRecyclerView: RecyclerView
+    
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        
+        emailTextView = findViewById(R.id.emailTextView)
+        messagesRecyclerView = findViewById(R.id.messagesRecyclerView)
+        
+        setupTemporaryEmail()
+    }
+    
+    private fun setupTemporaryEmail() {
+        lifecycleScope.launch(Dispatchers.IO) {
+            try {
+                // Create account
+                mailTM = SMailBuilder.createDefault("password123")
+                mailTM?.init()
+                
+                val account = mailTM?.getSelf()
+                
+                withContext(Dispatchers.Main) {
+                    emailTextView.text = account?.email
+                    Toast.makeText(
+                        this@MainActivity,
+                        "✅ Email ready: ${account?.email}",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+                
+                // Start listening for messages
+                mailTM?.openEventListener(object : EventListener {
+                    override fun onReady() {
+                        Log.d("SMailTM", "Ready to receive messages")
+                    }
+                    
+                    override fun onMessageReceived(message: Message) {
+                        runOnUiThread {
+                            showNotification(message)
+                            refreshMessages()
+                        }
+                    }
+                    
+                    override fun onError(error: String) {
+                        Log.e("SMailTM", "Error: $error")
+                    }
+                    
+                    // Implement other methods...
+                    override fun onMessageSeen(message: Message) {}
+                    override fun onMessageDelete(id: String) {}
+                    override fun onAccountUpdate(account: Account) {}
+                    override fun onAccountDelete(account: Account) {}
+                })
+                
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(
+                        this@MainActivity,
+                        "❌ Error: ${e.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }
+    }
+    
+    private fun refreshMessages() {
+        mailTM?.asyncFetchMessages(object : MessageFetchedCallback {
+            override fun onMessagesFetched(messages: List<Message>) {
+                runOnUiThread {
+                    // Update your RecyclerView adapter here
+                    Log.d("SMailTM", "Fetched ${messages.size} messages")
+                }
+            }
+            
+            override fun onError(error: Response) {
+                Log.e("SMailTM", "Error fetching messages: ${error.responseCode}")
+            }
+        })
+    }
+    
+    private fun showNotification(message: Message) {
+        Toast.makeText(
+            this,
+            "📧 New email from: ${message.senderAddress}",
+            Toast.LENGTH_LONG
+        ).show()
+    }
+    
+    override fun onDestroy() {
+        super.onDestroy()
+        mailTM?.closeMessageListener()
+    }
+}
+```
+
+### Basic Example (Simplified)
+
+```kotlin
+import com.samyak.smailtm.util.SMailBuilder
+import com.samyak.smailtm.callbacks.MessageFetchedCallback
 import javax.security.auth.login.LoginException
 
 // Create a temporary email account
-val mailTM = SMaliBuilder.createDefault("password123")
+val mailTM = SMailBuilder.createDefault("password123")
 mailTM.init()
 
 // Get account info
@@ -195,12 +530,12 @@ mailTM.fetchMessages(object : MessageFetchedCallback {
 #### Create with Random Email
 
 ```kotlin
-import com.samyak.SMailTM.util.SMaliBuilder
+import com.samyak.SMailTM.util.SMailBuilder
 import javax.security.auth.login.LoginException
 
 try {
     // Create a random account
-    val mailTM = SMaliBuilder.createDefault("your_password")
+    val mailTM = SMailBuilder.createDefault("your_password")
     mailTM.init()
     
     val account = mailTM.getSelf()
@@ -217,7 +552,7 @@ try {
 ```kotlin
 try {
     val email = "myemail@example.com"
-    val mailTM = SMaliBuilder.createAndLogin(email, "password")
+    val mailTM = SMailBuilder.createAndLogin(email, "password")
     
     println("Account created: ${mailTM.getSelf().email}")
 } catch (e: LoginException) {
@@ -231,7 +566,7 @@ try {
 
 ```kotlin
 try {
-    val mailTM = SMaliBuilder.login("email@domain.com", "password")
+    val mailTM = SMailBuilder.login("email@domain.com", "password")
     val account = mailTM.getSelf()
     
     println("Logged in as: ${account.email}")
@@ -245,7 +580,7 @@ try {
 
 ```kotlin
 try {
-    val mailTM = SMaliBuilder.loginWithToken("your_jwt_token")
+    val mailTM = SMailBuilder.loginWithToken("your_jwt_token")
     println("Logged in with token")
 } catch (e: LoginException) {
     println("Token login failed: ${e.message}")
@@ -539,7 +874,7 @@ println("Domain: ${domain.domainName}")
 
 // Create account with specific domain
 val email = "myname@${randomDomain.domainName}"
-val mailTM = SMaliBuilder.createAndLogin(email, "password")
+val mailTM = SMailBuilder.createAndLogin(email, "password")
 ```
 
 ## 🔧 Advanced Usage
@@ -553,7 +888,7 @@ lifecycleScope.launch {
     try {
         // Create account on IO thread
         val mail = withContext(Dispatchers.IO) {
-            SMaliBuilder.createDefault("password")
+            SMailBuilder.createDefault("password")
         }
         mail.init()
         
@@ -590,7 +925,7 @@ lifecycleScope.launch {
 
 ```kotlin
 // First login - save token
-val mailTM = SMaliBuilder.login("email@domain.com", "password")
+val mailTM = SMailBuilder.login("email@domain.com", "password")
 val account = mailTM.getSelf()
 val token = account.token
 
@@ -601,7 +936,7 @@ prefs.edit().putString("auth_token", token).apply()
 // Later - login with saved token
 val savedToken = prefs.getString("auth_token", null)
 if (savedToken != null) {
-    val mailTM = SMaliBuilder.loginWithToken(savedToken)
+    val mailTM = SMailBuilder.loginWithToken(savedToken)
     println("Logged in with saved token")
 }
 ```
@@ -624,7 +959,7 @@ val preferredDomain = activeDomains.firstOrNull {
 
 // Create account with selected domain
 val email = "myusername@${preferredDomain.domainName}"
-val mailTM = SMaliBuilder.createAndLogin(email, "password")
+val mailTM = SMailBuilder.createAndLogin(email, "password")
 ```
 
 ### Handling Multiple Accounts
@@ -635,7 +970,7 @@ class EmailManager {
     
     fun addAccount(email: String, password: String) {
         try {
-            val mailTM = SMaliBuilder.login(email, password)
+            val mailTM = SMailBuilder.login(email, password)
             accounts[email] = mailTM
             println("Added account: $email")
         } catch (e: LoginException) {
@@ -661,7 +996,7 @@ class EmailManager {
 
 ## 📚 API Reference
 
-### SMaliBuilder
+### SMailBuilder
 
 Factory class for creating and managing SMailTM instances.
 
@@ -830,7 +1165,7 @@ interface WorkCallback {
 import javax.security.auth.login.LoginException
 
 try {
-    val mailTM = SMaliBuilder.login("email@domain.com", "password")
+    val mailTM = SMailBuilder.login("email@domain.com", "password")
 } catch (e: LoginException) {
     when {
         e.message?.contains("401") == true -> {
@@ -923,7 +1258,7 @@ sharedPreferences.edit().putString("auth_token", token).apply()
 // Reuse token on app restart
 val savedToken = sharedPreferences.getString("auth_token", null)
 if (savedToken != null) {
-    mailTM = SMaliBuilder.loginWithToken(savedToken)
+    mailTM = SMailBuilder.loginWithToken(savedToken)
 }
 ```
 
@@ -932,7 +1267,7 @@ if (savedToken != null) {
 ```kotlin
 lifecycleScope.launch(Dispatchers.IO) {
     try {
-        val mail = SMaliBuilder.createDefault("password")
+        val mail = SMailBuilder.createDefault("password")
         mail.init()
         
         withContext(Dispatchers.Main) {

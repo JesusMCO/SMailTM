@@ -131,7 +131,7 @@ Follow [Kotlin Coding Conventions](https://kotlinlang.org/docs/coding-convention
 fun createAccount(password: String): SMailTM {
     require(password.isNotEmpty()) { "Password cannot be empty" }
     
-    return SMaliBuilder.createDefault(password).apply {
+    return SMailBuilder.createDefault(password).apply {
         init()
     }
 }
@@ -208,7 +208,7 @@ fun `createAccount should return valid SMailTM instance`() {
     val password = "testPassword123"
     
     // Act
-    val result = SMaliBuilder.createDefault(password)
+    val result = SMailBuilder.createDefault(password)
     
     // Assert
     assertNotNull(result)
@@ -231,4 +231,5 @@ Contributors will be recognized in:
 - GitHub contributors page
 
 Thank you for contributing! 🙏
+
 

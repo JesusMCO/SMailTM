@@ -16,7 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import com.samyak.smailtm.callbacks.EventListener
 import com.samyak.smailtm.util.Account
 import com.samyak.smailtm.util.Message
-import com.samyak.smailtm.util.SMaliBuilder
+import com.samyak.smailtm.util.SMailBuilder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -103,7 +103,7 @@ class HomeFragment : Fragment() {
             try {
                 // Create random account
                 val mail = withContext(Dispatchers.IO) {
-                    SMaliBuilder.createDefault(currentPassword)
+                    SMailBuilder.createDefault(currentPassword)
                 }
                 
                 mail.init()
