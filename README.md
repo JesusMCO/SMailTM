@@ -8,8 +8,34 @@
 
 A powerful and easy-to-use Kotlin library for Android that provides a complete interface to interact with the [Mail.tm](https://mail.tm) temporary email service API. This library is a Kotlin conversion of the popular [JMailTM](https://github.com/shivam1608/JMailTM) library, optimized for modern Android development with Kotlin Coroutines support.
 
+## 📱 Apps Using SMailTM
+
+### TempBox Lite - Disposable Email Shield
+
+<a href="https://play.google.com/store/apps/details?id=com.samyak.tempboxlite">
+  <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" height="80"/>
+</a>
+
+**TempBox Lite** is a lightweight, ad-free temporary email app built with SMailTM library. Generate disposable email addresses instantly to protect your privacy and keep your inbox spam-free.
+
+**Key Features:**
+- 🚀 Instant temporary email generation
+- 📬 Real-time email receiving with attachments
+- 🔒 Complete privacy & anonymity (no registration required)
+- 🪶 Lightweight & fast performance
+- 📋 Easy copy & QR code sharing
+- 🔄 Auto-refresh inbox
+- 🧹 Self-cleaning inboxes for security
+
+Perfect for sign-ups, verifications, and protecting your personal email from spam!
+
+[**Download TempBox Lite on Google Play**](https://play.google.com/store/apps/details?id=com.samyak.tempboxlite)
+
+---
+
 ## 📋 Table of Contents
 
+- [Apps Using SMailTM](#-apps-using-smailtm)
 - [Features](#-features)
 - [Installation](#-installation)
 - [Quick Start](#-quick-start)
